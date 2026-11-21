@@ -96,7 +96,7 @@ import com.google.common.util.concurrent.MoreExecutors
 import com.nrnmusic.innertube.YouTube
 import com.nrnmusic.innertube.models.SongItem
 import com.nrnmusic.innertube.models.WatchEndpoint
-import com.nrnmusic.innertubex.extraction.ContentHints
+import com.metrolist.innertubex.extraction.ContentHints
 import com.nrnmusic.lastfm.LastFM
 import com.nrnmusic.music.MainActivity
 import com.nrnmusic.music.R
@@ -215,7 +215,7 @@ import com.nrnmusic.music.utils.InnerTubeXPlayer
 import com.nrnmusic.music.utils.dataStore
 import com.nrnmusic.music.utils.get
 import com.nrnmusic.music.utils.reportException
-import com.nrnmusic.music.widget.NrN MusicWidgetManager
+import com.nrnmusic.music.widget.NrNMusicWidgetManager
 import com.nrnmusic.music.widget.MusicWidgetReceiver
 import com.nrnmusic.music.widget.PlaylistWidgetReceiver
 import com.nrnmusic.music.ui.utils.resize
@@ -288,7 +288,7 @@ class MusicService :
     lateinit var eqProfileRepository: EQProfileRepository
 
     @Inject
-    lateinit var widgetManager: NrN MusicWidgetManager
+    lateinit var widgetManager: NrNMusicWidgetManager
 
     @Inject
     lateinit var listenTogetherManager: com.nrnmusic.music.listentogether.ListenTogetherManager

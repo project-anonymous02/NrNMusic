@@ -79,7 +79,7 @@ import com.nrnmusic.music.constants.PureBlackKey
 import com.nrnmusic.music.constants.PureBlackMiniPlayerKey
 import com.nrnmusic.music.constants.SelectedThemeColorKey
 import com.nrnmusic.music.ui.theme.DefaultThemeColor
-import com.nrnmusic.music.ui.theme.NrN MusicTheme
+import com.nrnmusic.music.ui.theme.NrNMusicTheme
 import com.nrnmusic.music.utils.rememberEnumPreference
 import com.nrnmusic.music.utils.rememberPreference
 
@@ -674,7 +674,7 @@ fun ThemeMockup(
         DarkMode.OFF -> false
     }
 
-    NrN MusicTheme(
+    NrNMusicTheme(
         darkTheme = useDark,
         pureBlack = pureBlack,
         themeColor = themeColor
@@ -782,7 +782,7 @@ fun ThemeMockupPortrait(
         DarkMode.OFF -> false
     }
 
-    NrN MusicTheme(
+    NrNMusicTheme(
         darkTheme = useDark,
         pureBlack = pureBlack,
         themeColor = themeColor

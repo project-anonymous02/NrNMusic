@@ -43,7 +43,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.content.FileProvider
 import com.nrnmusic.music.R
-import com.nrnmusic.music.ui.theme.NrN MusicTheme
+import com.nrnmusic.music.ui.theme.NrNMusicTheme
 import com.nrnmusic.music.utils.CrashHandler
 import java.io.File
 import java.text.SimpleDateFormat
@@ -60,7 +60,7 @@ class CrashActivity : ComponentActivity() {
         
         setContent {
             val darkTheme = isSystemInDarkTheme()
-            NrN MusicTheme(darkTheme = darkTheme) {
+            NrNMusicTheme(darkTheme = darkTheme) {
                 CrashScreen(
                     crashLog = crashLog,
                     onClose = { finishAffinity() },

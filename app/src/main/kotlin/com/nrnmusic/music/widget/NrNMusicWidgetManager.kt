@@ -33,7 +33,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class NrN MusicWidgetManager @Inject constructor(
+class NrNMusicWidgetManager @Inject constructor(
     @ApplicationContext private val context: Context,
     private val database: MusicDatabase,
     private val playlistWidgetManager: PlaylistWidgetManager,

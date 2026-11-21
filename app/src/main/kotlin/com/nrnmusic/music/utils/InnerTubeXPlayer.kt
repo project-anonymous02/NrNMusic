@@ -6,23 +6,23 @@ import com.nrnmusic.innertube.YouTube
 import com.nrnmusic.innertube.models.Thumbnail
 import com.nrnmusic.innertube.models.Thumbnails
 import com.nrnmusic.innertube.models.response.PlayerResponse
-import com.nrnmusic.innertubex.InnerTubeLogLevel
-import com.nrnmusic.innertubex.InnerTubeLogger
-import com.nrnmusic.innertubex.cipher.PlayerConfigRepository
-import com.nrnmusic.innertubex.cipher.RemotePlayerConfigStore
-import com.nrnmusic.innertubex.cipher.YouTubeCipherService
-import com.nrnmusic.innertubex.extraction.AudioQuality as InnerTubeXAudioQuality
-import com.nrnmusic.innertubex.extraction.ContentHints
-import com.nrnmusic.innertubex.extraction.ExtractedStream
-import com.nrnmusic.innertubex.extraction.InnerTubeExtractor
-import com.nrnmusic.innertubex.extraction.PoTokenResult
-import com.nrnmusic.innertubex.extraction.StreamResolveException
-import com.nrnmusic.innertubex.extraction.TokenProvider
-import com.nrnmusic.innertubex.extraction.TokenProviderCapabilities
-import com.nrnmusic.innertubex.extraction.YtConfigParser
-import com.nrnmusic.innertubex.extraction.YtConfigParserImpl
-import com.nrnmusic.innertubex.extraction.generateClientPlaybackNonce
-import com.nrnmusic.innertubex.extraction.strategy.PoTokenProviderKind
+import com.metrolist.innertubex.InnerTubeLogLevel
+import com.metrolist.innertubex.InnerTubeLogger
+import com.metrolist.innertubex.cipher.PlayerConfigRepository
+import com.metrolist.innertubex.cipher.RemotePlayerConfigStore
+import com.metrolist.innertubex.cipher.YouTubeCipherService
+import com.metrolist.innertubex.extraction.AudioQuality as InnerTubeXAudioQuality
+import com.metrolist.innertubex.extraction.ContentHints
+import com.metrolist.innertubex.extraction.ExtractedStream
+import com.metrolist.innertubex.extraction.InnerTubeExtractor
+import com.metrolist.innertubex.extraction.PoTokenResult
+import com.metrolist.innertubex.extraction.StreamResolveException
+import com.metrolist.innertubex.extraction.TokenProvider
+import com.metrolist.innertubex.extraction.TokenProviderCapabilities
+import com.metrolist.innertubex.extraction.YtConfigParser
+import com.metrolist.innertubex.extraction.YtConfigParserImpl
+import com.metrolist.innertubex.extraction.generateClientPlaybackNonce
+import com.metrolist.innertubex.extraction.strategy.PoTokenProviderKind
 import com.nrnmusic.music.constants.AudioQuality
 import com.nrnmusic.music.utils.potoken.PoTokenGenerator
 import kotlinx.coroutines.CancellationException
@@ -141,7 +141,7 @@ object InnerTubeXPlayer {
                 throw error
             } catch (error: Exception) {
                 logger.log(
-                    com.nrnmusic.innertubex.InnerTubeLogEvent(
+                    com.metrolist.innertubex.InnerTubeLogEvent(
                         level = InnerTubeLogLevel.WARN,
                         tag = TAG,
                         message = "old cipher disposal failed",
@@ -160,7 +160,7 @@ object InnerTubeXPlayer {
                             latestTransport.innerTube,
                             remoteStore,
                             logger,
-                        ).withEmbeddedConfigFallback(),
+                        ),
                     cipherService = cipherService,
                     innerTube = latestTransport.innerTube,
                     tokenProvider = tokenProvider,

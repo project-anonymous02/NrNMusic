@@ -196,7 +196,7 @@ import com.nrnmusic.music.ui.screens.settings.DarkMode
 import com.nrnmusic.music.ui.screens.settings.NavigationTab
 import com.nrnmusic.music.ui.theme.ColorSaver
 import com.nrnmusic.music.ui.theme.DefaultThemeColor
-import com.nrnmusic.music.ui.theme.NrN MusicTheme
+import com.nrnmusic.music.ui.theme.NrNMusicTheme
 import com.nrnmusic.music.ui.theme.extractThemeColor
 import com.nrnmusic.music.ui.utils.appBarScrollBehavior
 import com.nrnmusic.music.ui.utils.resetHeightOffset
@@ -472,7 +472,7 @@ class MainActivity : FragmentActivity() {
         }
 
         setContent {
-            NrN MusicApp(
+            NrNMusicApp(
                 latestVersionName = latestVersionName,
                 onLatestVersionNameChange = { latestVersionName = it },
                 playerConnection = playerConnectionSnapshot,
@@ -486,7 +486,7 @@ class MainActivity : FragmentActivity() {
     @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
     @OptIn(ExperimentalMaterial3Api::class)
     @Composable
-    private fun NrN MusicApp(
+    private fun NrNMusicApp(
         latestVersionName: String,
         onLatestVersionNameChange: (String) -> Unit,
         playerConnection: PlayerConnection?,
@@ -682,7 +682,7 @@ class MainActivity : FragmentActivity() {
                 }
         }
 
-        NrN MusicTheme(
+        NrNMusicTheme(
             darkTheme = useDarkTheme,
             pureBlack = pureBlack,
             themeColor = themeColor,

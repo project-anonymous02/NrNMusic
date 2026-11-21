@@ -25,7 +25,7 @@ import coil3.request.CachePolicy
 import coil3.request.ImageRequest
 import com.nrnmusic.innertube.YouTube
 import com.nrnmusic.innertube.models.SongItem
-import com.nrnmusic.innertubex.extraction.ContentHints
+import com.metrolist.innertubex.extraction.ContentHints
 import com.nrnmusic.music.constants.AudioQuality
 import com.nrnmusic.music.constants.AudioQualityKey
 import com.nrnmusic.music.db.MusicDatabase
