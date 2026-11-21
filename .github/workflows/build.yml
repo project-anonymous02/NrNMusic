@@ -65,7 +65,7 @@ jobs:
         run: ./gradlew --console=plain assemble${{ matrix.variantName }}Release --warning-mode summary
         env:
           NRNMUSIC_APPLICATION_ID: com.nrnmusic.music
-          NRNMUSIC_APP_NAME: NrN Music Nightly
+          NRNMUSIC_APP_NAME: NrNMusic
           NRNMUSIC_BUILD_COMMIT: ${{ github.sha }}
           PULL_REQUEST: "false"
           GITHUB_EVENT_NAME: ${{ github.event_name }}
@@ -150,7 +150,7 @@ jobs:
         run: ./gradlew --console=plain assemble${{ matrix.variantName }}Debug --warning-mode summary
         env:
           NRNMUSIC_APPLICATION_ID: com.nrnmusic.music
-          NRNMUSIC_APP_NAME: NrN Music Nightly
+          NRNMUSIC_APP_NAME: NrNMusic
           NRNMUSIC_BUILD_COMMIT: ${{ github.sha }}
           PULL_REQUEST: "false"
           GITHUB_EVENT_NAME: ${{ github.event_name }}
@@ -204,7 +204,7 @@ jobs:
           gh release create nightly \
             "nightly/NrN Music-with-Google-Cast.apk" \
             --target "$GITHUB_SHA" \
-            --title "NrN Music Nightly" \
+            --title "NrNMusic" \
             --notes-file nightly-notes.md \
             --generate-notes \
             --prerelease \
