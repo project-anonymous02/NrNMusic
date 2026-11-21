@@ -5,8 +5,8 @@ import com.nrnmusic.innertube.models.ReturnYouTubeDislikeResponse
 import com.nrnmusic.innertube.models.YouTubeClient
 import com.nrnmusic.innertube.models.YouTubeLocale
 import com.nrnmusic.innertube.models.response.NextResponse
-import com.nrnmusic.innertubex.InnerTube as InnerTubeX
-import com.nrnmusic.innertubex.InnerTubeHttpException
+import com.metrolist.innertubex.InnerTube as InnerTubeX
+import com.metrolist.innertubex.InnerTubeHttpException
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.engine.okhttp.OkHttp

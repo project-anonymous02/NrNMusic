@@ -68,8 +68,8 @@ import com.nrnmusic.innertube.pages.SearchResult
 import com.nrnmusic.innertube.pages.SearchSuggestionPage
 import com.nrnmusic.innertube.pages.SearchSummary
 import com.nrnmusic.innertube.pages.SearchSummaryPage
-import com.nrnmusic.innertubex.models.YouTubeClient.Companion.WEB
-import com.nrnmusic.innertubex.models.YouTubeClient.Companion.WEB_REMIX
+import com.metrolist.innertubex.models.YouTubeClient.Companion.WEB
+import com.metrolist.innertubex.models.YouTubeClient.Companion.WEB_REMIX
 import io.ktor.client.call.body
 import io.ktor.client.statement.bodyAsText
 import kotlinx.coroutines.async
