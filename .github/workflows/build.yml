@@ -182,7 +182,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           GH_REPO: ${{ github.repository }}
         run: |
-          mv nightly/app-universal-with-Google-Cast.apk nightly/NrN Music-with-Google-Cast.apk
+          mv nightly/app-universal-with-Google-Cast.apk "nightly/NrN Music-with-Google-Cast.apk"
 
           PREVIOUS_NIGHTLY_SHA=$(gh release view nightly --json targetCommitish --jq .targetCommitish 2>/dev/null || true)
           {
@@ -202,7 +202,7 @@ jobs:
           fi
 
           gh release create nightly \
-            nightly/NrN Music-with-Google-Cast.apk \
+            "nightly/NrN Music-with-Google-Cast.apk" \
             --target "$GITHUB_SHA" \
             --title "NrN Music Nightly" \
             --notes-file nightly-notes.md \
