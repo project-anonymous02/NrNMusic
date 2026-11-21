@@ -24,7 +24,7 @@ kotlin {
 
 dependencies {
     if (providers.gradleProperty("useMavenLocalInnerTubeX").isPresent) {
-        api("com.github.NrN MusicGroup:innertubex:${libs.versions.innertubex.get()}")
+        api("com.github.MetrolistGroup:innertubex:${libs.versions.innertubex.get()}")
     } else {
         api(libs.innertubex)
     }
