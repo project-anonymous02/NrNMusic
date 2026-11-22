@@ -2634,8 +2634,11 @@ fun HomeScreen(
     }
 
     if (!welcomeShown) {
-        Dialog(onDismissRequest = {}) {
-            FirstLaunchWelcomeCard(onContinue = { setWelcomeShown(true) })
+        Dialog(onDismissRequest = { setWelcomeShown(true) }) {
+            FirstLaunchWelcomeCard(
+                onContinue = { setWelcomeShown(true) },
+                onClose = { setWelcomeShown(true) },
+            )
         }
     }
 }

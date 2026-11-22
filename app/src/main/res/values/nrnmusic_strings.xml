@@ -1000,4 +1000,16 @@
     <string name="welcome_continue">Lanjut</string>
     <string name="share_recap">Bagikan recap</string>
     <string name="share_recap_failed">Gagal membagikan recap</string>
+    <string name="welcome_features_title">Fitur-fitur:</string>
+    <string name="welcome_together_title">Dengar bersama</string>
+    <string name="welcome_together_location">Pada pengaturan bawaan, ikon dua orang ada di kanan atas, setelah Statistik dan sebelum Profil. Ketuk ikon itu untuk membuka Dengar bersama.</string>
+    <string name="welcome_together_steps">1. Ketuk Buat Room, isi nama pengguna, lalu buat room.\n2. Bagikan kode room yang muncul ke teman.\n3. Teman ketuk Gabung Room, isi nama pengguna dan kode room.\n4. Jika persetujuan otomatis nonaktif, host harus menyetujui permintaan bergabung.</string>
+    <string name="welcome_together_extras">Host bisa mengatur persetujuan anggota dan saran lagu, serta sinkronisasi volume. Tamu juga bisa mengirim saran lagu ke host.</string>
+    <string name="welcome_hidden_title">Fitur lain yang mungkin belum kamu tahu</string>
+    <string name="welcome_hidden_sleep">• Sleep Timer: hentikan musik setelah durasi tertentu atau setelah lagu selesai, dengan opsi fade-out.</string>
+    <string name="welcome_hidden_equalizer">• Equalizer: atur karakter suara dan simpan preset EQ sendiri.</string>
+    <string name="welcome_hidden_radio">• Song Radio: mulai antrean lagu serupa dari sebuah lagu atau album.</string>
+    <string name="welcome_hidden_lyrics">• Lirik: tampilkan lirik yang mengikuti pemutaran jika sinkronisasi tersedia.</string>
+    <string name="welcome_hidden_wrapped">• Listening Wrapped: lihat ringkasan aktivitas mendengarkanmu.</string>
+    <string name="about_show_welcome_card">NrNMusic</string>
 </resources>
