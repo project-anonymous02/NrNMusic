@@ -990,4 +990,14 @@
     <string name="stream_source_android_vr_desc">Android VR clients (all versions).</string>
     <string name="stream_source_web_creator">WEB_CREATOR</string>
     <string name="stream_source_web_creator_desc">Creator web client.</string>
+    <string name="about_version_2">NrNMusic versi 2.0</string>
+    <string name="about_release_summary">Versi terbaru menghadirkan rekomendasi musik personal berdasarkan kebiasaan mendengarkan dan Listening Recap yang dapat dibagikan.</string>
+    <string name="personalized_recommendations">Rekomendasi untuk anda</string>
+    <string name="welcome_made_by">application Made by Nata</string>
+    <string name="welcome_whats_new">Yang terbaru:</string>
+    <string name="welcome_feature_recommendations">• Rekomendasi musik personal dari kebiasaan mendengarkan</string>
+    <string name="welcome_feature_recap">• Listening Recap yang bisa dibagikan</string>
+    <string name="welcome_continue">Lanjut</string>
+    <string name="share_recap">Bagikan recap</string>
+    <string name="share_recap_failed">Gagal membagikan recap</string>
 </resources>

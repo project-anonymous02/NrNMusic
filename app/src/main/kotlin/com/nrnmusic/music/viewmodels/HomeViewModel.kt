@@ -110,6 +110,7 @@ class HomeViewModel @Inject constructor(
     val forgottenFavorites = MutableStateFlow<List<Song>?>(null)
     val keepListening = MutableStateFlow<List<LocalItem>?>(null)
     val similarRecommendations = MutableStateFlow<List<SimilarRecommendation>?>(null)
+    val personalRecommendations = MutableStateFlow<List<SongItem>>(emptyList())
     val accountPlaylists = MutableStateFlow<List<PlaylistItem>?>(null)
     val homePage = MutableStateFlow<HomePage?>(null)
     val explorePage = MutableStateFlow<ExplorePage?>(null)
@@ -438,6 +439,48 @@ class HomeViewModel @Inject constructor(
         communityPlaylists.value = playlists.shuffled()
     }
 
+    private suspend fun loadPersonalRecommendations() {
+        val now = LocalDateTime.now()
+        val seeds = database.mostPlayedSongs(
+            fromTimeStamp = now.minusMonths(3),
+            limit = 8,
+            offset = 0,
+            toTimeStamp = now,
+        ).first().filter { !it.song.isLocal && !it.song.isEpisode }
+        if (seeds.isEmpty()) {
+            personalRecommendations.value = emptyList()
+            return
+        }
+
+        val hideExplicit = context.dataStore.get(HideExplicitKey, false)
+        val hideVideoSongs = context.dataStore.get(HideVideoSongsKey, false)
+        val hideYoutubeShorts = context.dataStore.get(HideYoutubeShortsKey, false)
+        val playedSeedIds = seeds.mapTo(mutableSetOf()) { it.id }
+        val candidates = linkedMapOf<String, Pair<Int, SongItem>>()
+
+        seeds.take(5).forEachIndexed { seedIndex, seed ->
+            val endpoint = YouTube.next(WatchEndpoint(videoId = seed.id)).getOrNull()?.relatedEndpoint
+                ?: return@forEachIndexed
+            val relatedSongs = YouTube.related(endpoint).getOrNull()?.songs.orEmpty()
+                .filter { (!hideExplicit || !it.explicit) && (!hideVideoSongs || !it.isVideoSong) }
+                .filterYoutubeShorts(hideYoutubeShorts)
+                .filterIsInstance<SongItem>()
+            relatedSongs.forEach { song ->
+                if (song.id !in playedSeedIds) {
+                    val previous = candidates[song.id]
+                    val score = (previous?.first ?: 0) + (5 - seedIndex)
+                    candidates[song.id] = score to song
+                }
+            }
+        }
+
+        personalRecommendations.value = candidates.values
+            .sortedByDescending { it.first }
+            .map { it.second }
+            .distinctBy { it.id }
+            .take(12)
+    }
+
     private suspend fun load() {
         isLoading.value = true
         val hideExplicit = context.dataStore.get(HideExplicitKey, false)
@@ -492,6 +535,8 @@ class HomeViewModel @Inject constructor(
 
         // Phase 2: Heavy multi-request operations — run in background without blocking the UI.
         viewModelScope.launch(Dispatchers.IO) { getDailyDiscover() }
+
+        viewModelScope.launch(Dispatchers.IO) { loadPersonalRecommendations() }
 
         viewModelScope.launch(Dispatchers.IO) { getCommunityPlaylists() }
 

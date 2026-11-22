@@ -73,6 +73,7 @@ import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.blur
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
@@ -86,6 +87,7 @@ import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.window.Dialog
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.nrnmusic.music.LocalNavController
@@ -116,6 +118,7 @@ import com.nrnmusic.music.constants.GridItemSize
 import com.nrnmusic.music.constants.GridItemsSizeKey
 import com.nrnmusic.music.constants.GridThumbnailHeight
 import com.nrnmusic.music.constants.InnerTubeCookieKey
+import com.nrnmusic.music.constants.FirstLaunchWelcomeShownKey
 import com.nrnmusic.music.constants.ListItemHeight
 import com.nrnmusic.music.constants.ListThumbnailSize
 import com.nrnmusic.music.constants.RandomizeHomeOrderKey
@@ -167,6 +170,7 @@ import com.nrnmusic.music.utils.rememberEnumPreference
 import com.nrnmusic.music.utils.rememberPreference
 import com.nrnmusic.music.viewmodels.CommunityPlaylistItem
 import com.nrnmusic.music.viewmodels.HomeViewModel
+import com.nrnmusic.music.ui.component.FirstLaunchWelcomeCard
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
@@ -664,6 +668,8 @@ fun HomeScreen(
     val forgottenFavorites by viewModel.forgottenFavorites.collectAsStateWithLifecycle()
     val keepListening by viewModel.keepListening.collectAsStateWithLifecycle()
     val similarRecommendations by viewModel.similarRecommendations.collectAsStateWithLifecycle()
+    val personalRecommendations by viewModel.personalRecommendations.collectAsStateWithLifecycle()
+    val (welcomeShown, setWelcomeShown) = rememberPreference(FirstLaunchWelcomeShownKey, false)
     val accountPlaylists by viewModel.accountPlaylists.collectAsStateWithLifecycle()
     val homePage by viewModel.homePage.collectAsStateWithLifecycle()
     val explorePage by viewModel.explorePage.collectAsStateWithLifecycle()
@@ -1146,6 +1152,7 @@ fun HomeScreen(
     }
 
     PullToRefreshBox(
+        modifier = Modifier.blur(if (welcomeShown) 0.dp else 28.dp),
         state = pullRefreshState,
         isRefreshing = isRefreshing,
         onRefresh = viewModel::refresh,
@@ -1197,6 +1204,21 @@ fun HomeScreen(
                             viewModel.toggleChip(it)
                         },
                     )
+                }
+
+                if (selectedChip == null && personalRecommendations.isNotEmpty()) {
+                    item(key = "personalized_recommendations_title") {
+                        NavigationTitle(title = stringResource(R.string.personalized_recommendations))
+                    }
+                    item(key = "personalized_recommendations_list") {
+                        LazyRow(
+                            contentPadding = WindowInsets.systemBars.only(WindowInsetsSides.Horizontal).asPaddingValues(),
+                        ) {
+                            items(personalRecommendations, key = { "personal_recommendation_${it.id}" }) { song ->
+                                ytGridItem(song)
+                            }
+                        }
+                    }
                 }
 
                 if (isLoading && homePage?.chips.isNullOrEmpty()) {
@@ -2608,6 +2630,12 @@ fun HomeScreen(
                     navController.navigate("recognition")
                 },
             )
+        }
+    }
+
+    if (!welcomeShown) {
+        Dialog(onDismissRequest = {}) {
+            FirstLaunchWelcomeCard(onContinue = { setWelcomeShown(true) })
         }
     }
 }

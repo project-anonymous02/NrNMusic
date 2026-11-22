@@ -310,7 +310,7 @@ fun WrappedScreenContent() {
                 }
 
                 is WrappedScreenType.Conclusion -> {
-                    ConclusionPage(onClose = onClose)
+                    ConclusionPage(onClose = onClose, onShare = { shareWrappedRecap(view.context, state) })
                 }
             }
         }

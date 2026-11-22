@@ -27,7 +27,7 @@ import com.nrnmusic.music.ui.screens.wrapped.components.AnimatedBackground
 import com.nrnmusic.music.ui.screens.wrapped.components.ShapeType
 
 @Composable
-fun ConclusionPage(onClose: () -> Unit) {
+fun ConclusionPage(onClose: () -> Unit, onShare: () -> Unit) {
     Box(modifier = Modifier.fillMaxSize()) {
         AnimatedBackground(elementCount = 30, shapeTypes = listOf(ShapeType.Circle, ShapeType.Line))
         Column(
@@ -58,7 +58,15 @@ fun ConclusionPage(onClose: () -> Unit) {
                     color = Color.Gray
                 )
             )
-            Spacer(modifier = Modifier.height(48.dp))
+            Spacer(modifier = Modifier.height(32.dp))
+            Button(
+                onClick = onShare,
+                shape = CircleShape,
+                colors = ButtonDefaults.buttonColors(containerColor = Color.White)
+            ) {
+                Text(text = stringResource(R.string.share_recap), style = TextStyle(color = Color.Black, fontWeight = FontWeight.Bold))
+            }
+            Spacer(modifier = Modifier.height(12.dp))
             Button(
                 onClick = onClose,
                 shape = CircleShape,
