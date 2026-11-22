@@ -68,7 +68,7 @@ fun FirstLaunchWelcomeCard(
 
             Spacer(Modifier.height(10.dp))
             Column(
-                modifier = Modifier.weight(1f).verticalScroll(rememberScrollState()),
+                modifier = Modifier.weight(1f, fill = false).verticalScroll(rememberScrollState()),
                 verticalArrangement = Arrangement.spacedBy(10.dp),
             ) {
                 Text(stringResource(R.string.welcome_whats_new), style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.SemiBold)
@@ -91,7 +91,7 @@ fun FirstLaunchWelcomeCard(
                     TopBarPreviewIcon(R.drawable.history)
                     TopBarPreviewIcon(R.drawable.stats)
                     TopBarPreviewIcon(R.drawable.group_outlined, selected = true)
-                    TopBarPreviewIcon(R.drawable.person)
+                    TopBarPreviewIcon(R.drawable.account)
                 }
 
                 Text(stringResource(R.string.welcome_together_steps), style = MaterialTheme.typography.bodyMedium)
